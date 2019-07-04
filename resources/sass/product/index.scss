@@ -1,0 +1,93 @@
+.container-product{
+    left: 0;
+    width: 100%;
+    height: 54px;
+    min-width: 1200px;
+    top: 56px;
+    background: #fff;
+    position: fixed;
+    z-index: 90000;
+    -webkit-box-shadow: 0 0.1rem 0.4rem rgba(0,0,0,.1);
+    box-shadow: 0 0.1rem 0.4rem rgba(0,0,0,.1);
+    .old-wrapper{
+        width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        .menu-product{
+            display: flex;
+            width: 50%;
+            align-items: center;
+            .item{
+                a{
+                    margin: 0;
+                    padding: 16px 18px 14px;
+                    border-bottom: 4px solid transparent;
+                    font-size: 16px;
+                    text-decoration: none;
+                    color: #666;
+                    -webkit-transition: opacity .2s ease,border-bottom-color .2s ease;
+                    transition: opacity .2s ease,border-bottom-color .2s ease;
+                    cursor: pointer;
+                    line-height: 54px;
+                }
+            }
+        }
+    }
+    .content{
+        width: 1200px;
+        margin: auto;
+        .old-pr{
+            width: 100%;
+            display: flex;
+            margin-top: 30px; 
+            .total-product{
+                width:250px;
+                height: 30px;
+                border: 1px solid red;
+                border-radius:10px;
+                margin-left: 30px;  
+                p{
+                    line-height: 30px;
+                    margin-left: 5px;  
+                }
+            }
+        }
+        .product-content {
+            width: 100%;
+            .product {
+              float: left;
+              width: 16.6%;
+              height: 275px;
+              padding: 3px;
+    
+              .product-div {
+                border: 1px solid transparent;
+                background: white;
+                cursor: pointer;
+                .img {
+                  img {
+                    width: 100%;
+                    height: 188px;
+                  }
+                }
+                .name a {
+                  padding: 4px;
+                  word-wrap: break-word;
+                  line-height: 1.125rem;
+                  height: 2.25rem;
+                  overflow: hidden;
+                  display: -webkit-box;
+                  text-overflow: ellipsis;
+                  -webkit-box-orient: vertical;
+                  -webkit-line-clamp: 2;
+                }
+                .price p {
+                  padding: 4px;
+                  color: red;
+                  margin-top: 10px;
+                }
+              }
+            }
+          }
+    }
+}

@@ -1,0 +1,48 @@
+.container-home{
+    width: 1000px;
+    margin: auto;
+    align-items: center;
+    .title{
+        width: 100%;
+        height: 60px;
+        h1{
+            padding: 20px;
+            text-align: center;
+        }
+    }
+    
+    .content-home{
+        width: 100%;
+        align-items: center;
+        margin-top: 100px; 
+        .item-menu-home{
+            width: 20%;
+            padding: 30px;
+            float: left;
+            text-align: center;
+            position: relative;
+            cursor: pointer;
+            .img{
+                position: relative;
+                img{
+                    width: 100%;
+                    border-radius: 100%; 
+                }
+                i{
+                    position: absolute;
+                    top:35%;
+                    color: white;
+                    font-size: 35px; 
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                }
+            }
+            h3{
+                margin-top: 10px;
+                color: grey; 
+                font-size: 16px; 
+            }
+        }
+    }
+}
