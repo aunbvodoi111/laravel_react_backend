@@ -21,8 +21,10 @@ class CreateCustomersTable extends Migration
             $table->string('note');
             $table->integer('gender');
             $table->integer('phone');
-            $table->unsignedBigInteger('UserId');
-            $table->foreign('UserId')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('UserIdBuyer');
+            $table->foreign('UserIdBuyer')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('UserIdSaler');
+            $table->foreign('UserIdSaler')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
