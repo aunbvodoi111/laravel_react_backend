@@ -2,13 +2,16 @@ import React, { Component } from 'react';
 import './../../../sass/product/index.scss'
 import './../../../sass/order/index.scss'
 import { connect } from 'react-redux'
+import { withRouter, Link } from 'react-router-dom'
 import { fetchDataOrder } from '../../actions/order'
 
 class productContainer extends Component {
   componentWillMount() {
     this.props.fetchDataOrder()
+    console.log('this.props.match.params.id')
+    console.log(this.props.match.params.id)
   }
-  sum = (order) =>{
+  sum = (order) => {
     console.log(order)
   }
   render() {
@@ -25,7 +28,7 @@ class productContainer extends Component {
                   <img src="https://cf.shopee.vn/file/c1bdafa3b095b8dca82c74fe20ab2ee0" alt="" />
                 </div>
                 <div className='name-user'>
-                  <p>{ order.user.name }</p>
+                  <p>{order.user.name}</p>
                 </div>
               </div>
               {
@@ -54,7 +57,12 @@ class productContainer extends Component {
                           <p>Giao hàng tiết kiệm</p>
                         </div>
                         <div className='action'>
-                          <button>Xem chi tiết</button>
+                          <Link to={{
+                            pathname: `/order/detail/${order.id}`,
+                            state: { authenticated: true }
+                          }}>
+                            <button>Xem chi tiết</button>
+                          </Link>
                         </div>
                       </div>
                     </div>
@@ -69,7 +77,7 @@ class productContainer extends Component {
                       <p>Tổng số lượng: </p>
                     </div>
                     <div className='qty'>
-                      <p>{ order.sum }</p>
+                      <p>{order.sum}</p>
                     </div>
                   </div>
                   <div className='sum-price'>
@@ -77,7 +85,7 @@ class productContainer extends Component {
                       <p>Tổng tiền hàng:</p>
                     </div>
                     <div className='sum'>
-                      <p>₫{ order.sum }</p>
+                      <p>₫{order.sum}</p>
                     </div>
                   </div>
                 </div>

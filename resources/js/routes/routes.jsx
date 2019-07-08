@@ -7,6 +7,7 @@ import cateContainer from './../container/Cate/cateContainer'
 import subcateContainer from './../container/Cate/subcateContainer' 
 import unitContainer from './../container/Cate/unitContainer'
 import OrderContainer from './../container/OrderContainer/OrderContainer'
+import DetailOrderContainer from './../container/OrderContainer/DetailOrderContainer'
 import { HashRouter, Link, Route, BrowserRouter, Switch } from 'react-router-dom';
 const appRouter = () => (
     <BrowserRouter>
@@ -20,6 +21,7 @@ const appRouter = () => (
                 <Route path="/subcate/all" component={subcateContainer} exact={true} />
                 <Route path="/unit/list/all" component={unitContainer} exact={true} />
                 <Route path="/order/saler" component={OrderContainer} exact={true} />
+                <Route path="/order/detail/:id" component={DetailOrderContainer} exact={true} />
             </Switch>
         </div>
     </BrowserRouter>

@@ -1,0 +1,127 @@
+.container-detail{
+    width: 1200px;
+    margin: auto;
+    .status{
+        width: 100%;
+        background-color: #fff;
+        box-shadow: 0 0.2rem 0.4rem rgba(0,0,0,.09);
+        transition: box-shadow .5s ease;
+        display: block;
+        margin: 16px 0;
+        width: 100%;
+        padding: 10px;
+        color: #404040;
+        p{
+            color: red;
+            font-weight: bold; 
+        }
+        span{
+            color: black;
+        }
+    }
+
+    .infor-customer{
+        width: 100%;
+        background-color: #fff;
+        box-shadow: 0 0.2rem 0.4rem rgba(0,0,0,.09);
+        transition: box-shadow .5s ease;
+        display: block;
+        margin: 16px 0;
+        width: 100%;
+        padding: 10px;
+        color: #404040;
+        p{
+            margin-top: 0px; 
+            color: black;
+            font-weight: bold; 
+        }
+        p:nth-child(2){
+            margin-top: 4px; 
+            color: grey;
+            font-weight: normal; 
+        }
+        p:nth-child(3){
+            color: grey;
+            font-weight: normal;
+        }       
+    }
+    .content-order{
+        width: 100%;
+        background-color: #fff;
+        box-shadow: 0 0.2rem 0.4rem rgba(0,0,0,.09);
+        transition: box-shadow .5s ease;
+        display: block;
+        margin: 16px 0;
+        width: 100%;
+        padding: 10px;
+        color: #404040;
+        .title-order{
+            width: 20%;
+            display: flex;
+            .image{
+                width: 17%;
+                img{
+                    width: 100%;
+                    border-radius: 100%; 
+                }
+            }
+            .name-user{
+                width: 50%;
+                margin-left:8px; 
+                strong{
+                    color: grey;
+                }
+            }
+        }
+        .infor{
+            width: 100%;
+             
+            .title-order-view{
+                padding: 10px;
+                margin-top: 20px;
+                width: 100%;
+                display: flex;
+                .stt{
+                    width: 8%;
+                }
+                .name-order{
+                    width: 55%;
+                    display: flex;
+                    margin-right: 30px; 
+                    .img{
+                        width: 10%;
+                        img{
+                            width: 100%;
+                        }
+                    }
+                }
+                .price-order{
+                    width: 10%;
+                }
+                .qty-order{
+                    width: 10%;
+                }
+                .total-order{
+                    width: 10%;
+                }
+            }
+            .end-total{
+                width: 100%;
+                .div-right{
+                    width: 30%;
+                    margin-left: 65%;
+                    .div{
+                        width: 100%;
+                        display: flex;
+                        .div-title{
+                            width: 50%;
+                        }
+                        .div-sum{
+                            width: 50%;
+                        }
+                    } 
+                }
+            }
+        }
+    }
+}

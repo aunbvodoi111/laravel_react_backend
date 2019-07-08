@@ -41,6 +41,7 @@ Route::post('/update/unit','productController@updateUnit');
 Route::get('/list/cart','CartController@list');
 //bill
 Route::get('/list/bill','BillController@list');
+Route::get('/list/bill/detail/{id}','BillController@orderDetail');
 Route::get('/addkhoa',function(){
     Schema::table('customers', function ($table) {
             $table->foreign('UserIdBuyer')->references('id')->on('users')->onDelete('cascade');

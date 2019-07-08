@@ -3,6 +3,7 @@ import * as Types from '../constants/index'
 var initialState = {
     // errors: [],
     orders: [],
+    ordersDetail : {}
 }
 var findIndex = (subcates, id) => {
     var result = -1;
@@ -22,8 +23,8 @@ const product = (state = initialState, action) => {
         //     return { errors: [...action.errors], cates: state.cates };
         case Types.LIST_ORDER:
             return { orders: [...action.data.orders]};
-        case Types.LIST_PRODUCT:
-            return { products: [...action.products]};
+        case Types.FETCH_DATA_ORDER_DETAIL:
+            return { ordersDetail: action.data.ordersDetail};
         // case Types.UPDATE_CATE:
         //     index = findIndex(state.cates, cate.id);
         //     state.cates[index] = cate;

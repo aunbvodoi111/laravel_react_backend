@@ -1,5 +1,5 @@
 import * as Types from './../constants/index'
-import { ROOT_URL } from './../constants/api'
+import { ROOT_URL } from './../constants/api'  
 import axios from 'axios'
 
 export const fetchDataOrder = () => {
@@ -17,88 +17,18 @@ export const fetchDataStore = (data) => {
     }
 }
 
-export const fetchProduct = () => {
+export const fetchDataOrderDetail = (id) => {
     return (dispatch) => {
-        axios.get(`${ROOT_URL}/list/product`).then(response => {
-            dispatch(fetchProductStore(response.data.products))
+        axios.get(`${ROOT_URL}/list/bill/detail/`+id).then(response => {
+            dispatch(fetchDataDetailStore(response.data))
         })
     }
 }
 
-export const deleteCate = (id) => {
-    return (dispatch) => {
-        axios.get(`${ROOT_URL}/delete/cate/` + id).then(response => {
-            dispatch(deleteCateStore(id))
-        })
+export const fetchDataDetailStore = (data) => {
+    return {
+        type: Types.FETCH_DATA_ORDER_DETAIL,
+        data
     }
 }
 
-export const addProduct = (product) => {
-    return (dispatch) => {
-        axios.post(`${ROOT_URL}/add/product`, {
-            name: product.name,
-            SubcateId: product.SubcateId,
-            UnitId: product.UnitId,
-            description: product.description,
-            discount: product.discount,
-            qty: product.qty,
-            mass: product.mass,
-            image: product.image,
-            price: product.price,
-        }).then(response => {
-            dispatch(addCateStore(response.data.cate))
-        })
-            .catch(error => {
-                if (error.response) {
-                    dispatch(errors(error.response.data.errors.name))
-                }
-            })
-    }
-}
-export const updateCate = (cate) => {
-    return (dispatch) => {
-        axios.post(`${ROOT_URL}/update/cate`, {
-            id: cate.id,
-            name: cate.name
-        }).then(response => {
-            dispatch(updateCateStore(response.data.cate))
-        })
-            .catch(error => {
-                if (error.response) {
-                    dispatch(errors(error.response.data.errors.name))
-                }
-            })
-    }
-}
-
-export const fetchProductStore = (products) => {
-    return {
-        type: Types.LIST_PRODUCT,
-        products
-    }
-}
-export const updateCateStore = (cate) => {
-    return {
-        type: Types.UPDATE_CATE,
-        cate
-    }
-}
-export const deleteCateStore = (id) => {
-    return {
-        type: Types.DELETE_CATE,
-        id
-    }
-}
-
-export const addCateStore = (cate) => {
-    return {
-        type: Types.ADD_CATE,
-        cate
-    }
-}
-export const errors = (errors) => {
-    return {
-        type: Types.ERRORS,
-        errors
-    }
-}

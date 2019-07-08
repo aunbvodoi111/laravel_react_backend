@@ -27,7 +27,8 @@ export const UPDATE_UNIT = 'UPDATE_UNIT'
 export const ADD_PRODUCT = 'ADD_PRODUCT'
 export const LIST_PRODUCT = 'LIST_PRODUCT'
 export const LIST_DATA = 'LIST_DATA'
-export const DELETE_PRODUCT = 'DELETE_PRODUCT'
+export const DELETE_PRODUCT = 'DELETE_PRODUCT' 
 
 //carts
 export const LIST_ORDER = 'LIST_ORDER'
+export const FETCH_DATA_ORDER_DETAIL = 'FETCH_DATA_ORDER_DETAIL'

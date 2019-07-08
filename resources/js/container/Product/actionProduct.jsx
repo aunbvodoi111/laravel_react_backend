@@ -22,7 +22,7 @@ class actionProduct extends Component {
     }
   }
   componentWillMount() {
-    console.log('adssda')
+   
     this.props.fetchData()
   }
   fileSelectedHandler = (e) => {
