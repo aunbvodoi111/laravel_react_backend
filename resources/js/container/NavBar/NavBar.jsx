@@ -67,8 +67,10 @@ class NavBar extends Component {
                   </Link>
                 </div>
                 <div className='select-menu'>
-                  <img src="https://cf.shopee.vn/file/aaa24a79e7015ab1d6c73392b4b54c93" alt="" />
-                  <span>Phạm đức quý</span>
+                  <Link to='/order/saler'>
+                    <img src="/img/menu3.png" alt="" />
+                    <span>Đơn hàng</span>
+                  </Link>
                 </div>
                 <div className='select-menu'>
                   <img src="https://cf.shopee.vn/file/aaa24a79e7015ab1d6c73392b4b54c93" alt="" />

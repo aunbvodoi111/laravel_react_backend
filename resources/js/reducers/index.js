@@ -4,11 +4,13 @@ import cate from './cate'
 import subcate from './subcate'
 import unit from './unit'
 import product from './product'
+import order from './order'
 const appReducers = combineReducers({
     cate,
     subcate,
     unit,
-    product
+    product,
+    order
 });
 
 export default appReducers;

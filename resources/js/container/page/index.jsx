@@ -54,9 +54,11 @@ class HomeContainer extends Component {
           </div>
           <div className="item-menu-home">
             <div className="img">
-              <img src="/img/menu3.png" alt="" />
-              <i className="fas fa-wallet"></i>
-              <h3>Đơn Bán</h3>
+              <Link to='/order/saler'>
+                <img src="/img/menu3.png" alt="" />
+                <i className="fas fa-wallet"></i>
+                <h3>Đơn Bán</h3>
+              </Link>
             </div>
           </div>
           <div className="item-menu-home">

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCustomersTable extends Migration
+class CreateCartDetailsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,12 @@ class CreateCustomersTable extends Migration
      */
     public function up()
     {
-        Schema::create('customers', function (Blueprint $table) {
+        Schema::create('cart_details', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->string('email');
-            $table->string('address');
-            $table->string('note');
-            $table->integer('gender');
-            $table->integer('phone');
-            $table->unsignedBigInteger('UserIdBuyer');
-            $table->foreign('UserIdBuyer')->references('id')->on('users')->onDelete('cascade');
+            $table->integer('qty');
+            $table->integer('checkBuy')->default(1);
+            $table->unsignedBigInteger('ProductId');
+            $table->foreign('ProductId')->references('id')->on('products')->onDelete('cascade');
             $table->unsignedBigInteger('UserIdSaler');
             $table->foreign('UserIdSaler')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
@@ -36,6 +32,6 @@ class CreateCustomersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('customers');
+        Schema::dropIfExists('cart_details');
     }
 }

@@ -31,12 +31,16 @@ Route::get('/delete/unit/{id}','UnitController@deleteUnit');
 Route::post('/update/unit','UnitController@updateUnit');
 //product
 Route::post('/upload','productController@upload');
+Route::post('/uploads','productController@uploads');
 Route::get('/list/product','productController@listProduct');
 Route::post('/add/product','productController@addProduct');
 Route::get('/list/data','productController@listData');
 Route::get('/delete/unit/{id}','productController@deleteUnit');
 Route::post('/update/unit','productController@updateUnit');
-
+//cart
+Route::get('/list/cart','CartController@list');
+//bill
+Route::get('/list/bill','BillController@list');
 Route::get('/addkhoa',function(){
     Schema::table('customers', function ($table) {
             $table->foreign('UserIdBuyer')->references('id')->on('users')->onDelete('cascade');

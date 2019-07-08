@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './../../../sass/product/action.scss'
+
 import { connect } from 'react-redux'
 import { addProduct, fetchData, } from './../../actions/product'
 class actionProduct extends Component {
@@ -16,16 +17,43 @@ class actionProduct extends Component {
       price: '',
       qty: '',
       mass: '',
-      image: ''
+      image: '',
+      files: []
     }
   }
   componentWillMount() {
     console.log('adssda')
     this.props.fetchData()
   }
+  fileSelectedHandler = (e) => {
+    console.log(e.target.files[0])
+    var anhquy = e.target.files[0]
+    this.setState({ files: [...this.state.files, ...e.target.files] })
+    let file
+    file = this.state.files
+    let formData = new FormData();
+    formData.append('file[]', file);
+    axios.post('http://localhost:8000/uploads/',
+      formData,
+      {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      }
+    ).then(response => {
+      console.log(response)
+      // this.setState({
+      //   image: '/img/' + response.data.result
+      // })
+    })
+      .catch(function () {
+        console.log('FAILURE!!')
+      });
+  }
   uploadImg = (event) => {
     let file
     file = event.target.files[0]
+    console.log(file)
     let formData = new FormData();
     formData.append('file', file);
     axios.post('http://localhost:8000/upload/',
@@ -51,23 +79,23 @@ class actionProduct extends Component {
     })
   }
   onClick = () => {
-    var { name, CateId, SubcateId, UnitId ,description ,discount ,price ,qty ,mass ,image } = this.state
-    var product={
-      name : name,
-      SubcateId : SubcateId,
-      UnitId : UnitId,
-      description : description,
-      discount : discount,
-      qty : qty,
-      mass : mass,
-      image : image,
-      price : price,
+    var { name, CateId, SubcateId, UnitId, description, discount, price, qty, mass, image } = this.state
+    var product = {
+      name: name,
+      SubcateId: SubcateId,
+      UnitId: UnitId,
+      description: description,
+      discount: discount,
+      qty: qty,
+      mass: mass,
+      image: image,
+      price: price,
     }
     this.props.addProduct(product)
   }
   render() {
     var { cates, units, subcates } = this.props
-    var { name, CateId, SubcateId, UnitId ,description ,discount ,price ,qty ,mass ,image } = this.state
+    var { name, CateId, SubcateId, UnitId, description, discount, price, qty, mass, image } = this.state
     if (units) {
       var elmUnit = units.map((unit, index) => {
         return (
@@ -82,17 +110,17 @@ class actionProduct extends Component {
         );
       })
     }
-    if(subcates){
+    if (subcates) {
       var elmSubcate = subcates.map((subcate, index) => {
         if (subcate.CateId == CateId) {
           return (
             <option value={subcate.id} key={index}>{subcate.name}</option>
           );
         }
-  
+
       })
     }
-    
+
 
     return (
       <div className="container-content">
@@ -132,7 +160,7 @@ class actionProduct extends Component {
             <p>*Tên sản phẩm</p>
           </div>
           <div className="txt-form">
-            <input type="text" className="form-control" onChange={this.onChange} value={name} name="name"/>
+            <input type="text" className="form-control" onChange={this.onChange} value={name} name="name" />
           </div>
         </div>
         <div className="form">
@@ -140,7 +168,7 @@ class actionProduct extends Component {
             <p>*Giá</p>
           </div>
           <div className="txt-form">
-            <input type="number" className="form-control" onChange={this.onChange} value={price} name="price"/>
+            <input type="number" className="form-control" onChange={this.onChange} value={price} name="price" />
           </div>
         </div>
         <div className="form">
@@ -148,7 +176,7 @@ class actionProduct extends Component {
             <p>*Khối lượng</p>
           </div>
           <div className="txt-form">
-            <input type="number" className="form-control" onChange={this.onChange} value={mass} name="mass"/>
+            <input type="number" className="form-control" onChange={this.onChange} value={mass} name="mass" />
           </div>
         </div>
         <div className="form">
@@ -156,7 +184,7 @@ class actionProduct extends Component {
             <p>Số lượng</p>
           </div>
           <div className="txt-form">
-            <input type="number" className="form-control" onChange={this.onChange} value={qty} name="qty"/>
+            <input type="number" className="form-control" onChange={this.onChange} value={qty} name="qty" />
           </div>
         </div>
         <div className="form">
@@ -164,7 +192,7 @@ class actionProduct extends Component {
             <p>Gía khuyến mại</p>
           </div>
           <div className="txt-form">
-            <input type="number" className="form-control" onChange={this.onChange} value={discount} name="discount"/>
+            <input type="number" className="form-control" onChange={this.onChange} value={discount} name="discount" />
           </div>
         </div>
         <div className="form">
@@ -177,6 +205,7 @@ class actionProduct extends Component {
         </div>
         <input type="file" onChange={this.uploadImg} ref='file' id='file' ref='file' />
         <img src={image} />
+        <input type="file" multiple onChange={this.fileSelectedHandler} />
         <div className="form">
           <button onClick={this.onClick}>Lưu</button>
           <button>Hủy</button>
@@ -203,7 +232,7 @@ const mapDispatchToProps = (dispatch, props) => {
       console.log(product)
       dispatch(addProduct(product))
     },
-    
+
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(actionProduct);

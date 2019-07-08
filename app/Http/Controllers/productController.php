@@ -1,12 +1,13 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Cate;
 use App\Subcate;
 use App\Product;
 use App\Unit;
+use App\User;
+use App\Cart;
+use App\Cart_detail;
 use Illuminate\Support\Facades\Auth;
 class productController extends Controller
 {
@@ -41,6 +42,22 @@ class productController extends Controller
             'result' => $name
         ], 200);
     }
+    public function uploads(Request $res){
+        // dd($res->file);
+        
+        if ($res->get('file')) {
+            foreach ($res->get('file') as $file) {
+                dd($file);
+                $name= $file->getClientOriginalName();
+                $file->move("img",$name); 
+                return response([
+                    'result' => $name
+                ], 200);
+            }
+        }
+		
+    }
+
     public function updateSubcate (Request $request){
         $request->validate([
             'name' => 'required|min:2',
@@ -65,13 +82,15 @@ class productController extends Controller
     }
     public function listProduct(){
         $products  = Product::all();
-        return response([
+
+          return response([
             'products' => $products,
     	]);
     }
     public function deleteSubcate( $id ){
         $subcate  = Subcate::find($id);
         $subcate->delete();
+        
         return response([
     		'subcate' => $subcate
     	]);

@@ -20,8 +20,6 @@ class CreateBillsTable extends Migration
             $table->date('date_order');
             $table->text('note');
             $table->integer('sum');
-            $table->unsignedBigInteger('CustomerId');
-            $table->foreign('CustomerId')->references('id')->on('customers')->onDelete('cascade');
             $table->unsignedBigInteger('UserIdBuyer');
             $table->foreign('UserIdBuyer')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('UserIdSaler');
