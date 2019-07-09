@@ -70059,16 +70059,26 @@ var DetailOrderContainer =
 function (_Component) {
   _inherits(DetailOrderContainer, _Component);
 
-  function DetailOrderContainer() {
+  function DetailOrderContainer(props) {
+    var _this;
+
     _classCallCheck(this, DetailOrderContainer);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(DetailOrderContainer).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(DetailOrderContainer).call(this, props));
+    _this.state = {};
+    return _this;
   }
 
   _createClass(DetailOrderContainer, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.fetchDataOrderDetail(this.props.match.params.id);
+      console.log('anhquy');
+      var match = this.props.match;
+
+      if (match) {
+        var id = match.params.id;
+        this.props.fetchDataOrderDetail(id);
+      }
     }
   }, {
     key: "render",
@@ -70114,7 +70124,7 @@ function (_Component) {
         className: "infor-customer"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "infor"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "ID \u0110\u01A1n h\xE0ng"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, ordersDetail.id)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "ID \u0110\u01A1n h\xE0ng"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, ordersDetail ? ordersDetail.id : '')), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "infor"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\u0110\u1ECBa ch\u1EC9 nh\u1EADn h\xE0ng"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Gia l\xE2m - H\xE0 n\u1ED9i"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Nguyen thu trang, 84813898999")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "infor"
@@ -70153,7 +70163,7 @@ function (_Component) {
         className: "div-title"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "T\u1ED5ng ti\u1EC1n s\u1EA3n ph\u1EA9m")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "div-sum"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\u20AB", ordersDetail.sum))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\u20AB", ordersDetail ? ordersDetail.sum : ''))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "div"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "div-title"
@@ -70173,13 +70183,13 @@ function (_Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 var mapStateToProps = function mapStateToProps(state) {
-  console.log(state.order.ordersDetail);
   return {
     ordersDetail: state.order.ordersDetail
   };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch, props) {
+  console.log('anhquy');
   return {
     fetchDataOrderDetail: function fetchDataOrderDetail(id) {
       dispatch(Object(_actions_order__WEBPACK_IMPORTED_MODULE_4__["fetchDataOrderDetail"])(id));
@@ -70265,8 +70275,6 @@ function (_Component) {
     key: "componentWillMount",
     value: function componentWillMount() {
       this.props.fetchDataOrder();
-      console.log('this.props.match.params.id');
-      console.log(this.props.match.params.id);
     }
   }, {
     key: "render",

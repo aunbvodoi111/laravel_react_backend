@@ -9,6 +9,7 @@ use App\User;
 use App\Bill;
 use App\Bill_detail;
 use Illuminate\Support\Facades\Auth;
+use Mail; 
 class BillController extends Controller
 {
     //
@@ -35,5 +36,21 @@ class BillController extends Controller
             'ordersDetail'=>$ordersDetail
         ]);
     }
-    
+    public function sendMail(){
+        $data=
+            [
+                'name'=>'name',
+                'date_order'=>'name',
+                'sum'=>'name',
+                
+            ];
+        Mail::send('mail.mail',$data,function($message) use($data){
+            $message->from('phamquycntta@gmail.com','anhquy');
+            $message->to('phamqucntta11@gmail.com');
+            $message->subject('ok');
+            });
+            return response([
+                'data' => $data
+            ]);
+    }
 }

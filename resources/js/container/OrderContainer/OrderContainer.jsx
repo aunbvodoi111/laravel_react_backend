@@ -8,8 +8,6 @@ import { fetchDataOrder } from '../../actions/order'
 class productContainer extends Component {
   componentWillMount() {
     this.props.fetchDataOrder()
-    console.log('this.props.match.params.id')
-    console.log(this.props.match.params.id)
   }
   sum = (order) => {
     console.log(order)

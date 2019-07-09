@@ -5,38 +5,50 @@ import './../../../sass/order/detail.scss'
 import { fetchDataOrderDetail } from '../../actions/order'
 
 class DetailOrderContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+     
+    }
+  }
   componentDidMount() {
-    this.props.fetchDataOrderDetail(this.props.match.params.id)
+    console.log('anhquy')
+    var { match } = this.props
+    if (match) {
+      var id = match.params.id
+      this.props.fetchDataOrderDetail(id)
+    }
   }
   render() {
     var { ordersDetail } = this.props
     var bills_detail
-    if(ordersDetail){
-       bills_detail = ordersDetail.bills_detail;
+    if (ordersDetail) {
+      bills_detail = ordersDetail.bills_detail;
+      
     }
     if (bills_detail) {
-      var  elmData  = bills_detail.map((item, index) => {
+      var elmData = bills_detail.map((item, index) => {
         return (
-          <div className='title-order-view' key={ index }>
+          <div className='title-order-view' key={index}>
             <div className='stt'>
               <p>1</p>
             </div>
             <div className='name-order'>
               <div className='img'>
-                <img src={ item.image } alt="" />
+                <img src={item.image} alt="" />
               </div>
               <div className='name'>
-                <p>{ item.product.name }</p>
+                <p>{item.product.name}</p>
               </div>
             </div>
             <div className='price-order'>
-              <p>{ item.product.discount }</p>
+              <p>{item.product.discount}</p>
             </div>
             <div className='qty-order'>
               <p>1</p>
             </div>
             <div className='total-order'>
-              <p>{ item.product.discount * item.qty }</p>
+              <p>{item.product.discount * item.qty}</p>
             </div>
           </div>
         );
@@ -51,7 +63,7 @@ class DetailOrderContainer extends Component {
         <div className='infor-customer'>
           <div className='infor'>
             <p>ID Đơn hàng</p>
-            <span>{ ordersDetail.id }</span>
+            <span>{ordersDetail  ? ordersDetail.id :  '' }</span>
           </div>
           <div className='infor'>
             <p>Địa chỉ nhận hàng</p>
@@ -92,7 +104,7 @@ class DetailOrderContainer extends Component {
               </div>
             </div>
 
-            { elmData }
+            {elmData}
 
             <div className='end-total'>
               <div className='div-right'>
@@ -101,7 +113,7 @@ class DetailOrderContainer extends Component {
                     <p>Tổng tiền sản phẩm</p>
                   </div>
                   <div className='div-sum'>
-                    <p>₫{ordersDetail.sum}</p>
+                    <p>₫{ordersDetail  ? ordersDetail.sum :  '' }</p>
                   </div>
                 </div>
                 <div className='div'>
@@ -132,12 +144,12 @@ class DetailOrderContainer extends Component {
 
 
 const mapStateToProps = state => {
-  console.log(state.order.ordersDetail)
   return {
     ordersDetail: state.order.ordersDetail
   }
 }
 const mapDispatchToProps = (dispatch, props) => {
+  console.log('anhquy')
   return {
     fetchDataOrderDetail: (id) => {
       dispatch(fetchDataOrderDetail(id))
